@@ -24,7 +24,7 @@ class Loader extends PluginBase {
         self::$generalKB = $config["general-kb"];
         self::$only_players = $config["only-players"];
 
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
     }
 
 
