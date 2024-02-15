@@ -1,0 +1,4 @@
+name: KBEditor
+version: 0.1.0
+api: 5.0.0
+main: phqzing\kbeditor\Loader
