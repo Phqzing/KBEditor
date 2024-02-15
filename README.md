@@ -6,8 +6,7 @@
 Change the Knoback values of world or the entire server to your liking!
 
 # Config / Settings
-```
----
+```yml
 ---
 # if this is true the Knockback will only be applied to players but if it's false it will also apply to other entities
 only-players: true
@@ -35,7 +34,6 @@ world-kb:
     horizontal: 0.25
     vertical: 0.25
     attack-speed: 2
-...
 ...
 ```
 
