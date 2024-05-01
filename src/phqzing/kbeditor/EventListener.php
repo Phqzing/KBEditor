@@ -14,6 +14,10 @@ use pocketmine\math\Vector3;
 class EventListener implements Listener {
  
 
+    /**
+    * @param EnityDamageEvent $ev
+    * @priority MONITOR
+    */
     public function onDamage(EntityDamageEvent $ev):void
     {
         $player = $ev->getEntity();
@@ -26,6 +30,7 @@ class EventListener implements Listener {
 	    
         if($ev instanceof EntityDamageByEntityEvent)
         {
+	    if($ev->isCancelled()) return;
             $damager = $ev->getDamager();
             if(Loader::$only_players)
             {
