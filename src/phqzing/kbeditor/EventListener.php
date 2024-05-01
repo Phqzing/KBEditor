@@ -7,6 +7,7 @@ namespace phqzing\kbeditor;
 use pocketmine\event\Listener;
 use pocketmine\event\entity\{EntityDamageEvent, EntityDamageByEntityEvent};
 use pocketmine\player\Player;
+use pocketmine\entity\Living;
 use pocketmine\math\Vector3;
 
 
@@ -22,13 +23,13 @@ class EventListener implements Listener {
             if(!($player instanceof Player)) return;
         }
         if($ev->isCancelled()) return;
-
+	    
         if($ev instanceof EntityDamageByEntityEvent)
         {
             $damager = $ev->getDamager();
             if(Loader::$only_players)
             {
-                if(!($damager instanceof Player)) return;
+                if(!($damager instanceof Player) or !($player instanceof Player)) return;
             }
 
             $world = $damager->getWorld()->getFolderName();
@@ -52,7 +53,7 @@ class EventListener implements Listener {
     }
 
 
-    public function modifyKB(Player $player, float $deltaX, float $deltaZ, float $horizontal, float $vertical, ?float $verticalLimit = 0.4):void
+    public function modifyKB(Living $player, float $deltaX, float $deltaZ, float $horizontal, float $vertical, ?float $verticalLimit = 0.4):void
     {
 		$f = sqrt($deltaX * $deltaX + $deltaZ * $deltaZ);
 		if($f <= 0) return;
